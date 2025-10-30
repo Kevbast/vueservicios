@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Global from "@/Global";
+import Global from "./../Global";
 import axios from "axios";
 //SI NECESITAMOS VARIABLES PARA TODO EL COMPONENT Y SUS MÉTODOS 
 //SE DECLARAN AQUÍ(mounted,methods,create)
