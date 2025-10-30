@@ -5,8 +5,8 @@
     <input type="text" v-model="id">
     <button @click="buscarPorID">Buscar</button>
 
-    <ul v-for="cliente in clientes" :key="cliente">
-        <li><strong>ID:</strong>{{cliente.CustomerID}}  <strong>Nombre:</strong>{{ cliente.ContactName}} <strong>Empresa:</strong>{{ cliente.CompanyName}}</li>
+    <ul class="list-group" v-for="cliente in clientes" :key="cliente">
+        <li class="list-group-item"><strong>ID:</strong>{{cliente.CustomerID}}  <strong>Nombre:</strong>{{ cliente.ContactName}} <strong>Empresa:</strong>{{ cliente.CompanyName}}</li>
     </ul>
 
     <div v-if="clienteEncontrado">
