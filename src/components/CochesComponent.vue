@@ -11,11 +11,12 @@
 </template>
 
 <script>
-import Global from "./../Global";
-import axios from "axios";
+import ServiceCoches from '@/services/ServiceCoches';
+//PARA PODER UTILIZAR EL SERVICIO NECESITAMOS UNA INSTANCIA(VARIABLE/OBJETO)
+//DE LA CLASE SERVICIO.
+const service= new ServiceCoches();
 //SI NECESITAMOS VARIABLES PARA TODO EL COMPONENT Y SUS MÉTODOS 
 //SE DECLARAN AQUÍ(mounted,methods,create)
-let urlApi=Global.apiCoches;
 export default {
     
     name:"CochesComponent",
@@ -24,13 +25,13 @@ export default {
             coches:[]
         }
     },
+    //SI CARGAMOS LA FUNCIÓN DESDE SERVICE CON SERVICIOS APIS NOSOTROS ESPERAMOS LA PROMESA,
+    // POR LO TANTO NO LLEGA SI LO PONEMOS EN MOUNTED,A NO SER QUE LO USEMOS COMO PROMESA
     mounted(){
-        //USAMOS EL MÉTODO GET AQUÍ
-        let request="webresources/coches";
-        //LAS VARIBALES DECLARADAS FUERA DEL EXPORT NO UTILIZAN THIS
-        axios.get(urlApi+request).then(response=>{
-            console.log("Leyendo servicio")
-            this.coches=response.data
+        //cargamos la función de service aqui
+        //UNA PROMESA NO ES UN MÉTODO,ES UN OBJETO,POR LO TANTO GETCOCHES ES SIN PARÉNTESIS
+        service.getCoches.then(result =>{
+            this.coches=result;
         })
     }
 }
