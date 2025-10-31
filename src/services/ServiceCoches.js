@@ -3,7 +3,9 @@ import Global from "@/Global";
 var urlApi=Global.apiCoches;
 export default class ServiceCoches {
 
-    getCoches = new Promise(function(resolve){
+    getCoches(){
+
+        return new Promise(function(resolve){
         let coches=[];
         //USAMOS EL MÉTODO GET AQUÍ
         let request="webresources/coches";
@@ -14,7 +16,9 @@ export default class ServiceCoches {
             console.log(coches);
             //RESOLVE VA DENTRO DEL AXIOS
             resolve(coches);
-        })
-        
+        })     
     })
+    }//Final getCoches()
+    
+
 }

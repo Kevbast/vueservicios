@@ -28,9 +28,8 @@ export default {
     //SI CARGAMOS LA FUNCIÓN DESDE SERVICE CON SERVICIOS APIS NOSOTROS ESPERAMOS LA PROMESA,
     // POR LO TANTO NO LLEGA SI LO PONEMOS EN MOUNTED,A NO SER QUE LO USEMOS COMO PROMESA
     mounted(){
-        //cargamos la función de service aqui
-        //UNA PROMESA NO ES UN MÉTODO,ES UN OBJETO,POR LO TANTO GETCOCHES ES SIN PARÉNTESIS
-        service.getCoches.then(result =>{
+        //cargamos la función de service aqui,las promesas no llevan (),pero getcoches como es un método si llevaría
+        service.getCoches().then(result =>{
             this.coches=result;
         })
     }

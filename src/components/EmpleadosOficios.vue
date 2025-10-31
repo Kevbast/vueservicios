@@ -28,9 +28,10 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Global from '@/Global';
-var urlApi = Global.apiEmpleados
+
+//IMPORTAMOS SERVICIO
+import ServiceEmpleados from '@/services/ServiceEmpleados';
+const service= new ServiceEmpleados();
 export default {
 name:"EmpleadosOficios",
 data(){
@@ -42,11 +43,11 @@ data(){
 methods:{
     loadEmpleados(){
         let oficio=this.$route.params.oficio;
-        let request="api/Empleados/EmpleadosOficio/"+oficio;
-        axios.get(urlApi+request).then(response=>{
-            console.log("Leyendo servicios")
-            this.empleados=response.data
+        //SERVICIO IMPORTADO
+        service.findEmpleadoOficio(oficio).then(result=>{
+            this.empleados=result;
         })
+
     }
 },
 

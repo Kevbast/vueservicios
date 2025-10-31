@@ -49,9 +49,9 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Global from '@/Global';
-let urlApi=Global.apiEmpleados
+//IMPORTAMOS SERVICIO
+import ServiceEmpleados from '@/services/ServiceEmpleados';
+const service= new ServiceEmpleados();
 export default {
     name: 'MenuComponent',
     data(){
@@ -60,10 +60,12 @@ export default {
         }
     },
     mounted(){
-        let request="api/empleados/oficios";
-        axios.get(urlApi+request).then(response=>{
-            this.oficios=response.data
-        })
+        
+
+        service.getEmpleadosOficios().then(result=>{
+        this.oficios=result
+    })
+
     }
 }
 </script>
