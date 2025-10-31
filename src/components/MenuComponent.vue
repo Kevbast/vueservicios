@@ -29,7 +29,19 @@
                     <li class="nav-item">
                         <router-link class="nav-link" to="/empleados">Empleados</router-link>
                     </li>
+                    <!-- DROPDOWN MENU PARA OFICIOS -->
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Oficios
+                    </a>
+                    <ul class="dropdown-menu" >
+                        <li v-for="oficio in oficios" :key="oficio">
+                            <router-link class="dropdown-item" :to="'/empleadosoficios/'+oficio">{{ oficio }}</router-link></li>
+
+                    </ul>
+                    </li>
                 </ul>
+                
                 <!-- Espacio derecho: puedes añadir botones o formularios aquí -->
             </div>
         </div>
@@ -37,8 +49,22 @@
 </template>
 
 <script>
+import axios from 'axios';
+import Global from '@/Global';
+let urlApi=Global.apiEmpleados
 export default {
-    name: 'MenuComponent'
+    name: 'MenuComponent',
+    data(){
+        return{
+            oficios:[]
+        }
+    },
+    mounted(){
+        let request="api/empleados/oficios";
+        axios.get(urlApi+request).then(response=>{
+            this.oficios=response.data
+        })
+    }
 }
 </script>
 
